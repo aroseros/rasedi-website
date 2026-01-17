@@ -1,0 +1,173 @@
+---
+
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 px-4">
+    <div
+        class="glass flex items-center justify-between px-6 py-3 rounded-full w-full max-w-5xl shadow-glass border border-white/5"
+    >
+        <!-- Logo -->
+        <a
+            href="/"
+            class="text-xl font-bold tracking-tight flex items-center gap-2 group"
+        >
+            <span
+                class="text-primary group-hover:shadow-neon transition-all duration-300 rounded-full h-3 w-3 bg-primary block"
+            ></span>
+            Rasedi
+        </a>
+
+        <!-- Links -->
+        <div
+            class="hidden md:flex items-center gap-8 text-sm font-medium text-white/70"
+        >
+            <a href="/features" class="hover:text-white transition-colors"
+                >Features</a
+            >
+            <a href="/developers" class="hover:text-white transition-colors"
+                >Developers</a
+            >
+            <a href="/company" class="hover:text-white transition-colors"
+                >Company</a
+            >
+        </div>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-4">
+            <a
+                href="https://dashboard.rasedi.com"
+                class="text-sm font-medium text-white/70 hover:text-white transition-colors hidden sm:block"
+            >
+                Login
+            </a>
+            <a
+                href="/contact"
+                class="bg-white/10 hover:bg-white/20 text-white text-sm font-bold px-5 py-2 rounded-full transition-all border border-white/10 hover:border-white/20 active:scale-95 hidden sm:inline-flex"
+            >
+                Get Started
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button
+                id="mobile-menu-btn"
+                class="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white active:scale-95 transition-transform z-50 relative"
+                aria-label="Toggle Menu"
+            >
+                <div class="space-y-1.5 pointer-events-none">
+                    <span
+                        class="block w-5 h-0.5 bg-white transition-transform duration-300 origin-center"
+                        id="bar1"></span>
+                    <span
+                        class="block w-5 h-0.5 bg-white transition-opacity duration-300"
+                        id="bar2"></span>
+                    <span
+                        class="block w-5 h-0.5 bg-white transition-transform duration-300 origin-center"
+                        id="bar3"></span>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div
+        id="mobile-menu"
+        class="fixed inset-0 z-40 bg-black/60 backdrop-blur-3xl opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center"
+    >
+        <div
+            class="absolute inset-0 bg-gradient-to-b from-black/80 to-primary/10"
+        >
+        </div>
+
+        <div
+            class="relative z-50 flex flex-col items-center gap-8 text-center transform translate-y-10 transition-transform duration-300"
+            id="mobile-menu-content"
+        >
+            <nav class="flex flex-col gap-6">
+                <a
+                    href="/"
+                    class="text-3xl font-bold text-white hover:text-primary transition-colors mobile-link"
+                    >Home</a
+                >
+                <a
+                    href="/features"
+                    class="text-3xl font-bold text-white hover:text-primary transition-colors mobile-link"
+                    >Features</a
+                >
+                <a
+                    href="/developers"
+                    class="text-3xl font-bold text-white hover:text-primary transition-colors mobile-link"
+                    >Developers</a
+                >
+                <a
+                    href="/company"
+                    class="text-3xl font-bold text-white hover:text-primary transition-colors mobile-link"
+                    >Company</a
+                >
+            </nav>
+
+            <div class="w-16 h-px bg-white/10 my-2"></div>
+
+            <div class="flex flex-col gap-4 w-full px-8">
+                <a
+                    href="https://dashboard.rasedi.com"
+                    class="text-lg font-medium text-white/70 hover:text-white transition-colors"
+                >
+                    Login
+                </a>
+                <a
+                    href="/contact"
+                    class="bg-white text-black text-lg font-bold px-8 py-3 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-105 transition-transform"
+                >
+                    Get Started ->
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+    const menuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuContent = document.getElementById("mobile-menu-content");
+    const bar1 = document.getElementById("bar1");
+    const bar2 = document.getElementById("bar2");
+    const bar3 = document.getElementById("bar3");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+
+    let isOpen = false;
+
+    function toggleMenu() {
+        isOpen = !isOpen;
+
+        if (isOpen) {
+            // Open State
+            mobileMenu?.classList.remove("opacity-0", "pointer-events-none");
+            menuContent?.classList.remove("translate-y-10");
+            document.body.style.overflow = "hidden"; // Lock scroll
+
+            // Animate Hamburger to X
+            bar1?.classList.add("rotate-45", "translate-y-2");
+            bar2?.classList.add("opacity-0");
+            bar3?.classList.add("-rotate-45", "-translate-y-2");
+        } else {
+            // Close State
+            mobileMenu?.classList.add("opacity-0", "pointer-events-none");
+            menuContent?.classList.add("translate-y-10");
+            document.body.style.overflow = ""; // Unlock scroll
+
+            // Animate X back to Hamburger
+            bar1?.classList.remove("rotate-45", "translate-y-2");
+            bar2?.classList.remove("opacity-0");
+            bar3?.classList.remove("-rotate-45", "-translate-y-2");
+        }
+    }
+
+    menuBtn?.addEventListener("click", toggleMenu);
+
+    // Close menu when a link is clicked
+    mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+            if (isOpen) toggleMenu();
+        });
+    });
+</script>

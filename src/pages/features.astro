@@ -1,0 +1,418 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import { Image } from "astro:assets";
+import unifiedPaymentsImg from "../assets/features/unified-payments.png";
+import instantPayoutsImg from "../assets/features/instant-payouts.png";
+import paymentLinksImg from "../assets/features/payment-links.png";
+import smartInvoicingImg from "../assets/features/smart-invoicing.png";
+---
+
+<Layout title="Features | Rasedi">
+    <Navbar />
+
+    <main class="pt-32 pb-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <header class="text-center mb-32">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
+                    Power <span class="text-primary">Features</span>
+                </h1>
+                <p class="text-white/60 text-xl max-w-2xl mx-auto">
+                    Everything you need to monetize your business in Iraq. <br
+                    />
+                    Built for scale, designed for simplicity.
+                </p>
+            </header>
+
+            <!-- FEATURE 1: UNIFIED PAYMENTS (Deep Dive) -->
+            <section class="mb-32">
+                <div
+                    class="glass border border-white/10 rounded-3xl overflow-hidden"
+                >
+                    <div class="grid lg:grid-cols-2 gap-0">
+                        <!-- Visual -->
+                        <div
+                            class="bg-black/40 relative min-h-[400px] flex items-center justify-center p-8 group overflow-hidden"
+                        >
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-50"
+                            >
+                            </div>
+                            <!-- Glow Effect behind image -->
+                            <div
+                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/20 blur-[100px] rounded-full"
+                            >
+                            </div>
+
+                            <Image
+                                src={unifiedPaymentsImg}
+                                alt="Unified Payment Architecture"
+                                class="relative z-10 w-full max-w-md object-contain transform group-hover:scale-105 transition-transform duration-700 drop-shadow-2xl"
+                            />
+                        </div>
+
+                        <!-- Content -->
+                        <div class="p-10 lg:p-16 flex flex-col justify-center">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20"
+                                >
+                                    <span class="text-primary text-xl">💳</span>
+                                </div>
+                                <span
+                                    class="text-primary font-mono text-sm tracking-wider uppercase"
+                                    >Feature 01</span
+                                >
+                            </div>
+
+                            <h2 class="text-4xl font-bold mb-6">
+                                Unified Payment Gateway
+                            </h2>
+                            <p
+                                class="text-white/70 text-lg leading-relaxed mb-8"
+                            >
+                                Stop managing five different merchant wallets.
+                                Rasedi consolidates the fragmented Iraqi payment
+                                landscape into a single, elegant API.
+                            </p>
+
+                            <div class="space-y-4 mb-10">
+                                <div
+                                    class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-primary/30 transition-colors"
+                                >
+                                    <div class="text-2xl">📱</div>
+                                    <div>
+                                        <div class="font-bold text-white">
+                                            All Mobile Wallets
+                                        </div>
+                                        <div class="text-sm text-white/50">
+                                            ZainCash, AsiaHawala, FastPay
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-primary/30 transition-colors"
+                                >
+                                    <div class="text-2xl">💳</div>
+                                    <div>
+                                        <div class="font-bold text-white">
+                                            Local & Global Cards
+                                        </div>
+                                        <div class="text-sm text-white/50">
+                                            QI Card, Master Card, Visa
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a
+                                href="#"
+                                class="inline-flex items-center text-primary font-bold hover:text-white transition-colors"
+                            >
+                                View Integration Docs →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FEATURE 2: INSTANT PAYOUTS (Deep Dive) -->
+            <section class="mb-32">
+                <div
+                    class="glass border border-white/10 rounded-3xl overflow-hidden"
+                >
+                    <div class="grid lg:grid-cols-2 gap-0">
+                        <!-- Content (Left this time for visual balance) -->
+                        <div
+                            class="order-2 lg:order-1 p-10 lg:p-16 flex flex-col justify-center"
+                        >
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20"
+                                >
+                                    <span class="text-primary text-xl">⚡</span>
+                                </div>
+                                <span
+                                    class="text-primary font-mono text-sm tracking-wider uppercase"
+                                    >Feature 02</span
+                                >
+                            </div>
+
+                            <h2 class="text-4xl font-bold mb-6">
+                                Instant Payouts
+                            </h2>
+                            <p
+                                class="text-white/70 text-lg leading-relaxed mb-8"
+                            >
+                                Cash flow is oxygen. Don't wait T+3 days for
+                                your money. Rasedi settles funds to your
+                                preferred account instantly.
+                            </p>
+
+                            <ul class="space-y-4 mb-10 text-lg text-white/80">
+                                <li class="flex items-center gap-3">
+                                    <span class="text-primary">✓</span>
+                                    <span
+                                        >Withdraw to <strong
+                                            >ZainCash / AsiaHawala</strong
+                                        > instantly</span
+                                    >
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="text-primary">✓</span>
+                                    <span
+                                        >Local Bank Transfers (IMT) within 24h</span
+                                    >
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="text-primary">✓</span>
+                                    <span
+                                        >Zero withdrawal fees for amounts > 1M
+                                        IQD</span
+                                    >
+                                </li>
+                            </ul>
+
+                            <a
+                                href="#"
+                                class="inline-flex items-center text-primary font-bold hover:text-white transition-colors"
+                            >
+                                Compare Payout Rates →
+                            </a>
+                        </div>
+
+                        <!-- Visual -->
+                        <div
+                            class="order-1 lg:order-2 bg-black/40 relative min-h-[400px] flex items-center justify-center p-8 group overflow-hidden"
+                        >
+                            <div
+                                class="absolute inset-0 bg-gradient-to-bl from-primary/10 via-transparent to-transparent opacity-50"
+                            >
+                            </div>
+                            <!-- Glow Effect -->
+                            <div
+                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/10 blur-[100px] rounded-full"
+                            >
+                            </div>
+
+                            <Image
+                                src={instantPayoutsImg}
+                                alt="Instant Payouts"
+                                class="relative z-10 w-full max-w-md object-contain transform group-hover:scale-105 transition-transform duration-700 drop-shadow-2xl"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FEATURE 3: PAYMENT LINKS (Deep Dive) -->
+            <section class="mb-32">
+                <div
+                    class="glass border border-white/10 rounded-3xl overflow-hidden"
+                >
+                    <div class="grid lg:grid-cols-2 gap-0">
+                        <!-- Visual -->
+                        <div
+                            class="bg-black/40 relative min-h-[400px] flex items-center justify-center p-8 group overflow-hidden"
+                        >
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-50"
+                            >
+                            </div>
+                            <!-- Glow Effect -->
+                            <div
+                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-500/10 blur-[100px] rounded-full"
+                            >
+                            </div>
+
+                            <Image
+                                src={paymentLinksImg}
+                                alt="Payment Links"
+                                class="relative z-10 w-full max-w-md object-contain transform group-hover:scale-105 transition-transform duration-700 drop-shadow-2xl"
+                            />
+                        </div>
+
+                        <!-- Content -->
+                        <div class="p-10 lg:p-16 flex flex-col justify-center">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20"
+                                >
+                                    <span class="text-primary text-xl">🔗</span>
+                                </div>
+                                <span
+                                    class="text-primary font-mono text-sm tracking-wider uppercase"
+                                    >Feature 03</span
+                                >
+                            </div>
+
+                            <h2 class="text-4xl font-bold mb-6">
+                                Social Commerce Ready
+                            </h2>
+                            <p
+                                class="text-white/70 text-lg leading-relaxed mb-8"
+                            >
+                                Sell on WhatsApp, Telegram, and Instagram
+                                without a website. Generate a secure payment
+                                link and get paid in seconds.
+                            </p>
+
+                            <div class="grid grid-cols-2 gap-4 mb-10">
+                                <div
+                                    class="p-4 rounded-xl bg-white/5 border border-white/5"
+                                >
+                                    <div class="text-white font-bold mb-1">
+                                        Fixed Price
+                                    </div>
+                                    <div class="text-white/50 text-sm">
+                                        Best for products
+                                    </div>
+                                </div>
+                                <div
+                                    class="p-4 rounded-xl bg-white/5 border border-white/5"
+                                >
+                                    <div class="text-white font-bold mb-1">
+                                        Open Amount
+                                    </div>
+                                    <div class="text-white/50 text-sm">
+                                        Best for donations
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a
+                                href="#"
+                                class="inline-flex items-center text-primary font-bold hover:text-white transition-colors"
+                            >
+                                Create a Test Link →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FEATURE 4: SMART INVOICING (Deep Dive) -->
+            <section class="mb-32">
+                <div
+                    class="glass border border-white/10 rounded-3xl overflow-hidden"
+                >
+                    <div class="grid lg:grid-cols-2 gap-0">
+                        <!-- Content (Left for balance) -->
+                        <div
+                            class="order-2 lg:order-1 p-10 lg:p-16 flex flex-col justify-center"
+                        >
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20"
+                                >
+                                    <span class="text-primary text-xl">📄</span>
+                                </div>
+                                <span
+                                    class="text-primary font-mono text-sm tracking-wider uppercase"
+                                    >Feature 04</span
+                                >
+                            </div>
+
+                            <h2 class="text-4xl font-bold mb-6">
+                                Automated Billing
+                            </h2>
+                            <p
+                                class="text-white/70 text-lg leading-relaxed mb-8"
+                            >
+                                Stop chasing payments manually. Create
+                                professional PDF invoices that track their own
+                                status and send automatic reminders.
+                            </p>
+
+                            <div class="space-y-4 mb-10">
+                                <div
+                                    class="p-4 bg-white/5 border border-white/5 rounded-xl flex items-center justify-between"
+                                >
+                                    <span class="text-white">Invoice #1024</span
+                                    >
+                                    <span
+                                        class="text-primary bg-primary/10 px-3 py-1 rounded-full text-xs font-bold"
+                                        >PAID (ZainCash)</span
+                                    >
+                                </div>
+                                <div
+                                    class="p-4 bg-white/5 border border-white/5 rounded-xl flex items-center justify-between opacity-60"
+                                >
+                                    <span class="text-white">Invoice #1025</span
+                                    >
+                                    <span
+                                        class="text-yellow-400 bg-yellow-400/10 px-3 py-1 rounded-full text-xs font-bold"
+                                        >PENDING</span
+                                    >
+                                </div>
+                            </div>
+
+                            <a
+                                href="#"
+                                class="inline-flex items-center text-primary font-bold hover:text-white transition-colors"
+                            >
+                                Generate Invoice →
+                            </a>
+                        </div>
+
+                        <!-- Visual -->
+                        <div
+                            class="order-1 lg:order-2 bg-black/40 relative min-h-[400px] flex items-center justify-center p-8 group overflow-hidden"
+                        >
+                            <div
+                                class="absolute inset-0 bg-gradient-to-bl from-primary/10 via-transparent to-transparent opacity-50"
+                            >
+                            </div>
+                            <!-- Glow Effect -->
+                            <div
+                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-green-500/10 blur-[100px] rounded-full"
+                            >
+                            </div>
+
+                            <Image
+                                src={smartInvoicingImg}
+                                alt="Smart Invoicing"
+                                class="relative z-10 w-full max-w-md object-contain transform group-hover:scale-105 transition-transform duration-700 drop-shadow-2xl"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Enterprise Section -->
+            <section
+                class="mt-32 glass rounded-3xl p-12 relative overflow-hidden"
+            >
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent pointer-events-none"
+                >
+                </div>
+                <div
+                    class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10"
+                >
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                            Enterprise Grade Security
+                        </h2>
+                        <p class="text-white/60 text-lg max-w-xl">
+                            Bank-grade encryption, AML compliance checks, and
+                            99.99% uptime SLA. Trust is our currency.
+                        </p>
+                    </div>
+                    <div class="flex gap-4">
+                        <div
+                            class="px-6 py-3 rounded-lg bg-black/50 border border-white/10 font-mono text-primary text-sm"
+                        >
+                            AES-256 ENCRYPTED
+                        </div>
+                        <div
+                            class="px-6 py-3 rounded-lg bg-black/50 border border-white/10 font-mono text-primary text-sm"
+                        >
+                            PCI-DSS READY
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</Layout>

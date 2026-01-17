@@ -1,0 +1,187 @@
+---
+import ThreeCanvas from "./ThreeCanvas";
+import { Image } from "astro:assets";
+import walletIcon from "../assets/hero/wallet.png";
+import cardIcon from "../assets/hero/card.png";
+import qiIcon from "../assets/hero/qi.png";
+---
+
+<section
+  class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
+>
+  <!-- 3D Background Element -->
+  <ThreeCanvas client:load />
+
+  <!-- Content -->
+  <div class="relative z-10 text-center max-w-4xl px-4">
+    <div
+      class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm md:text-base text-primary mb-8 animate-fade-in-up"
+    >
+      <span class="relative flex h-2 w-2">
+        <span
+          class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
+        ></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"
+        ></span>
+      </span>
+      Accept Payments in Iraq
+    </div>
+
+    <h1
+      class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 leading-[1.1]"
+    >
+      The <span
+        class="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/50"
+        >Financial OS</span
+      >
+      <br />
+      for Modern Business
+    </h1>
+
+    <p
+      class="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed"
+    >
+      Accept ZainCash, AsiaHawala, and Cards with a single API. <br />
+      Built for developers, trusted by banks.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a
+        href="/contact"
+        class="px-8 py-4 rounded-full bg-primary text-black font-bold text-lg hover:shadow-neon hover:scale-105 transition-all duration-300 w-full sm:w-auto"
+      >
+        Create Account
+      </a>
+      <a
+        href="https://docs.pallawan.com"
+        target="_blank"
+        class="px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-medium text-lg hover:bg-white/10 transition-all w-full sm:w-auto"
+      >
+        Read Documentation
+      </a>
+    </div>
+
+    <!-- Unified Ecosystem Dock -->
+    <div class="mt-24 perspective-1000">
+      <div
+        class="glass inline-flex items-center gap-4 sm:gap-8 px-6 sm:px-10 py-6 rounded-3xl border border-white/10 relative shadow-2xl backdrop-blur-xl animate-fade-in-up"
+      >
+        <!-- Glow Effect behind dock -->
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-primary/20 via-purple-500/20 to-primary/20 blur-xl -z-10 opacity-30"
+        >
+        </div>
+
+        <!-- Item 1: Mobile Wallets -->
+        <div
+          class="group flex flex-col items-center gap-3 relative transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+        >
+          <div
+            class="relative w-16 h-16 sm:w-20 sm:h-20 transition-transform duration-300 group-hover:scale-110"
+          >
+            <div
+              class="absolute inset-0 bg-primary/20 blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+            </div>
+            <Image
+              src={walletIcon}
+              alt="Mobile Wallets"
+              class="w-full h-full object-contain drop-shadow-lg"
+            />
+          </div>
+          <span
+            class="text-xs font-mono text-white/40 group-hover:text-primary transition-colors tracking-wide uppercase"
+            >ZainCash & AsiaHawala</span
+          >
+
+          <!-- Hover Beam -->
+          <div
+            class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-1 h-8 bg-gradient-to-t from-transparent to-primary/50 opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="w-px h-12 bg-white/5"></div>
+
+        <!-- Item 2: QI Card -->
+        <div
+          class="group flex flex-col items-center gap-3 relative transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+        >
+          <div
+            class="relative w-16 h-16 sm:w-20 sm:h-20 transition-transform duration-300 group-hover:scale-110"
+          >
+            <div
+              class="absolute inset-0 bg-yellow-500/20 blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+            </div>
+            <Image
+              src={qiIcon}
+              alt="QI Card"
+              class="w-full h-full object-contain drop-shadow-lg"
+            />
+          </div>
+          <span
+            class="text-xs font-mono text-white/40 group-hover:text-yellow-400 transition-colors tracking-wide uppercase"
+            >QI Card (Smart)</span
+          >
+          <!-- Hover Beam -->
+          <div
+            class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-1 h-8 bg-gradient-to-t from-transparent to-yellow-500/50 opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="w-px h-12 bg-white/5"></div>
+
+        <!-- Item 3: Cards -->
+        <div
+          class="group flex flex-col items-center gap-3 relative transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+        >
+          <div
+            class="relative w-16 h-16 sm:w-20 sm:h-20 transition-transform duration-300 group-hover:scale-110"
+          >
+            <div
+              class="absolute inset-0 bg-purple-500/20 blur-md rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+            </div>
+            <Image
+              src={cardIcon}
+              alt="Mastercard Visa"
+              class="w-full h-full object-contain drop-shadow-lg"
+            />
+          </div>
+          <span
+            class="text-xs font-mono text-white/40 group-hover:text-purple-400 transition-colors tracking-wide uppercase"
+            >Mastercard & Visa</span
+          >
+          <!-- Hover Beam -->
+          <div
+            class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-1 h-8 bg-gradient-to-t from-transparent to-purple-500/50 opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-6 text-white/30 text-xs font-mono uppercase tracking-widest">
+        Accepted Nationwide in Iraq 🇮🇶
+      </p>
+    </div>
+  </div>
+
+  <style>
+    .animate-fade-in-up {
+      animation: fadeInUp 1s ease-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</section>

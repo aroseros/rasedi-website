@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@import "@fontsource/inter";
+@import "@fontsource/jetbrains-mono";
+
+@theme {
+    --font-sans: "Inter", "system-ui", "sans-serif";
+    --font-mono: "JetBrains Mono", "monospace";
+
+    --color-background: #050505;
+    --color-surface: #0A0A0A;
+    --color-surface-hover: #151515;
+
+    --color-primary: #00DC82;
+    --color-primary-glow: rgba(0, 220, 130, 0.5);
+
+    --color-brand-purple: #7B42F6;
+
+    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --shadow-neon: 0 0 20px rgba(0, 220, 130, 0.3);
+
+    --animate-float: float 6s ease-in-out infinite;
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+}
+
+@layer utilities {
+    .glass {
+        background: rgba(10, 10, 10, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .glass-card {
+        background: rgba(10, 10, 10, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        @apply rounded-2xl transition-all duration-300;
+    }
+
+    .glass-card:hover {
+        border-color: rgba(0, 220, 130, 0.3);
+        box-shadow: var(--shadow-neon);
+    }
+}

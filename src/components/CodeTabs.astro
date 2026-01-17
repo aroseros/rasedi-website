@@ -1,0 +1,159 @@
+---
+const { id = "code-tabs" } = Astro.props;
+
+const snippets = {
+    node: `
+// 1. Install SDK
+import { Rasedi } from 'rasedi-node';
+
+// 2. Initialize
+const client = new Rasedi({ 
+  apiKey: 'rk_test_...' 
+});
+
+// 3. Create Charge
+const charge = await client.charges.create({
+  amount: 25000,
+  currency: 'IQD',
+  method: 'zaincash',
+  callbackUrl: 'https://yourapp.com/hook'
+});
+`,
+    php: `
+// 1. Install via Composer
+use Rasedi\\Client;
+
+// 2. Initialize
+$client = new Client(['api_key' => 'rk_test_...']);
+
+// 3. Create Charge
+$charge = $client->charges->create([
+  'amount' => 25000,
+  'currency' => 'IQD',
+  'method' => 'zaincash',
+  'callback_url' => 'https://yourapp.com/hook'
+]);
+`,
+    csharp: `
+// 1. Install NuGet Package
+using Rasedi.Net;
+
+// 2. Initialize
+var client = new RasediClient("rk_test_...");
+
+// 3. Create Charge
+var charge = await client.Charges.CreateAsync(new ChargeCreateOptions
+{
+    Amount = 25000,
+    Currency = "IQD",
+    Method = "zaincash",
+    CallbackUrl = "https://yourapp.com/hook"
+});
+`,
+};
+---
+
+<code-tabs
+    class="glass block rounded-xl border border-white/10 overflow-hidden shadow-2xl"
+    data-snippets={JSON.stringify(snippets)}
+>
+    <!-- Tab Header -->
+    <div
+        class="flex items-center bg-white/5 border-b border-white/5 overflow-x-auto"
+    >
+        <button
+            class="tab-btn px-6 py-3 text-sm font-mono text-primary border-b-2 border-primary transition-colors hover:bg-white/5"
+            data-tab="node"
+        >
+            Node.js
+        </button>
+        <button
+            class="tab-btn px-6 py-3 text-sm font-mono text-white/50 border-b-2 border-transparent transition-colors hover:text-white hover:bg-white/5"
+            data-tab="php"
+        >
+            PHP (Laravel)
+        </button>
+        <button
+            class="tab-btn px-6 py-3 text-sm font-mono text-white/50 border-b-2 border-transparent transition-colors hover:text-white hover:bg-white/5"
+            data-tab="csharp"
+        >
+            C# .NET
+        </button>
+    </div>
+
+    <!-- Code Content -->
+    <div
+        class="p-6 bg-black/60 font-mono text-sm overflow-x-auto relative group"
+    >
+        <div
+            class="absolute right-4 top-4 opacity-0 group-hover:opacity-100 transition-opacity"
+        >
+            <button
+                class="copy-btn text-xs text-white/40 hover:text-white uppercase tracking-wider"
+                >Copy</button
+            >
+        </div>
+
+        <pre
+            class="text-blue-100 min-h-[300px]"><code>{snippets.node.trim()}</code></pre>
+    </div>
+</code-tabs>
+
+<script>
+    class CodeTabs extends HTMLElement {
+        constructor() {
+            super();
+
+            // Safe JSON parse
+            let snippets = {};
+            try {
+                snippets = JSON.parse(this.dataset.snippets || "{}");
+            } catch (e) {
+                console.error("Failed to parse snippets", e);
+            }
+
+            const tabs = this.querySelectorAll(".tab-btn");
+            const codeBlock = this.querySelector("code");
+            const copyBtn = this.querySelector(".copy-btn");
+
+            // Tab Switching
+            tabs.forEach((tab) => {
+                tab.addEventListener("click", () => {
+                    // Update Active State
+                    tabs.forEach((t) => {
+                        t.classList.remove("text-primary", "border-primary");
+                        t.classList.add("text-white/50", "border-transparent");
+                    });
+                    tab.classList.remove("text-white/50", "border-transparent");
+                    tab.classList.add("text-primary", "border-primary");
+
+                    // Update Content
+                    const lang = tab.dataset.tab;
+                    if (codeBlock && snippets[lang]) {
+                        codeBlock.textContent = snippets[lang].trim();
+                    }
+                });
+            });
+
+            // Copy Functionality
+            copyBtn?.addEventListener("click", async () => {
+                if (!codeBlock) return;
+                try {
+                    await navigator.clipboard.writeText(
+                        codeBlock.textContent || "",
+                    );
+                    const originalText = copyBtn.textContent;
+                    copyBtn.textContent = "Copied!";
+                    setTimeout(
+                        () => (copyBtn.textContent = originalText),
+                        2000,
+                    );
+                } catch (err) {
+                    console.error("Failed to copy!", err);
+                }
+            });
+        }
+    }
+
+    customElements.define("code-tabs", CodeTabs);
+</script>

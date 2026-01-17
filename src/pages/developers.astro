@@ -1,166 +1,312 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
-
-const codeSnippet = `
-import { Rasedi } from 'miropay-sdk';
-
-const client = new Rasedi({
-  apiKey: process.env.RASEDI_KEY,
-  secret: process.env.RASEDI_SECRET
-});
-
-// Create a payment session
-const session = await client.payments.create({
-  amount: 50000,
-  currency: 'IQD',
-  orderId: 'ORD-123-XML',
-  description: 'Premium Subscription',
-  callbackUrl: 'https://api.myapp.com/webhook'
-});
-
-console.log(session.checkoutUrl);
-`;
+import CodeTabs from "../components/CodeTabs.astro";
 ---
 
 <Layout title="Developers | Rasedi">
     <Navbar />
 
     <main class="pt-32 pb-20 px-4">
-        <div
-            class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 items-start"
-        >
-            <!-- Content -->
-            <div class="flex-1">
-                <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm mb-8 font-mono"
-                >
-                    v2.0.0 Stable
-                </div>
-
-                <h1 class="text-5xl font-bold mb-6 tracking-tight">
-                    Built for <br /><span
-                        class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400"
-                        >Builders</span
-                    >
-                </h1>
-
-                <p class="text-white/60 text-lg mb-10 leading-relaxed">
-                    We hated legacy banking APIs, so we built the one we wanted
-                    to use. Predictable REST endpoints, typed SDKs, and granular
-                    webhooks.
-                </p>
-
-                <div class="space-y-6">
-                    <div class="flex items-start gap-4">
-                        <div
-                            class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shrink-0"
-                        >
-                            <span class="text-primary font-bold">1</span>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl mb-1">
-                                RESTful & Typesafe
-                            </h3>
-                            <p class="text-white/50">
-                                Standard HTTP verbs and TypeScript definitions
-                                out of the box.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-4">
-                        <div
-                            class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shrink-0"
-                        >
-                            <span class="text-primary font-bold">2</span>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl mb-1">
-                                Webhooks Engine
-                            </h3>
-                            <p class="text-white/50">
-                                Real-time events for payment success, failure,
-                                and refunds.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-4">
-                        <div
-                            class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shrink-0"
-                        >
-                            <span class="text-primary font-bold">3</span>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl mb-1">
-                                Sandbox Environment
-                            </h3>
-                            <p class="text-white/50">
-                                Test with fake money. Zero risk, full feature
-                                parity.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-12 flex gap-4">
-                    <a
-                        href="https://docs.pallawan.com"
-                        target="_blank"
-                        class="px-6 py-3 rounded-full bg-white/10 text-white font-bold border border-white/10 hover:bg-white/20 transition-all"
-                    >
-                        Read Documentation
-                    </a>
-                    <a
-                        href="#"
-                        class="px-6 py-3 rounded-full text-white/70 hover:text-white transition-all"
-                    >
-                        View on GitHub →
-                    </a>
-                </div>
-            </div>
-
-            <!-- Code Column -->
-            <div class="flex-1 w-full lg:max-w-xl">
-                <div class="glass-card overflow-hidden">
+        <!-- Hero Section -->
+        <div class="max-w-7xl mx-auto mb-32">
+            <div class="flex flex-col lg:flex-row gap-16 items-start">
+                <div class="flex-1 pt-10">
                     <div
-                        class="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-black/40"
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm mb-8 font-mono"
                     >
-                        <div class="flex gap-2">
-                            <div class="w-3 h-3 rounded-full bg-red-500/50">
-                            </div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500/50">
-                            </div>
-                            <div class="w-3 h-3 rounded-full bg-green-500/50">
-                            </div>
-                        </div>
-                        <span class="text-xs text-white/30 font-mono"
-                            >payment-flow.ts</span
-                        >
+                        <span
+                            class="w-2 h-2 bg-primary rounded-full animate-pulse"
+                        ></span>
+                        v2.1 API Live
                     </div>
-                    <div class="p-6 bg-black/80 overflow-x-auto">
-                        <pre
-                            class="font-mono text-sm leading-relaxed text-blue-100"><code set:html={codeSnippet.trim().replace(/\n/g, '<br/>').replace(/\s/g, '&nbsp;')} /></pre>
-                        <!-- Note: The quick regex replace above is a hack for the raw string. 
-                     In a real app we'd use a syntax highlighter library or the previous span-based approach. 
-                     Reverting to span approach for cleaner highlighting below. -->
+
+                    <h1
+                        class="text-5xl md:text-7xl font-bold mb-8 tracking-tight"
+                    >
+                        Integrate <br />
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50"
+                            >in Minutes.</span
+                        >
+                    </h1>
+
+                    <p
+                        class="text-white/60 text-lg md:text-xl mb-12 leading-relaxed max-w-lg"
+                    >
+                        A developer-first financial platform. strictly typed
+                        SDKs, predictable REST endpoints, and Iraq's most
+                        reliable sandbox environment.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4">
+                        <a
+                            href="https://docs.pallawan.com"
+                            class="px-8 py-4 bg-primary text-black font-bold rounded-full hover:shadow-[0_0_30px_rgba(0,220,130,0.4)] transition-all"
+                        >
+                            Get API Keys
+                        </a>
+                        <a
+                            href="#sandbox"
+                            class="px-8 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-full hover:bg-white/10 transition-all"
+                        >
+                            View Test Data
+                        </a>
                     </div>
                 </div>
 
-                <!-- Terminal Output simulation -->
-                <div
-                    class="mt-6 glass-card p-4 font-mono text-xs text-green-400 bg-black"
-                >
-                    <div class="mb-2 opacity-50">$ node payment-flow.js</div>
-                    <div>> Processing payment ORD-123-XML...</div>
-                    <div>
-                        > Session created:
-                        https://checkout.rasedi.com/pay/session_8x92...
-                    </div>
-                    <div class="animate-pulse">> Waiting for user...</div>
+                <!-- Multi-Language Code Block -->
+                <div class="flex-1 w-full lg:max-w-2xl">
+                    <CodeTabs />
                 </div>
             </div>
         </div>
+
+        <!-- Quickstart Map -->
+        <section class="mb-32">
+            <h2 class="text-3xl font-bold text-center mb-16">
+                Integration Flow
+            </h2>
+            <div
+                class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8"
+            >
+                <!-- Step 1 -->
+                <div
+                    class="glass p-8 rounded-3xl border border-white/10 relative group hover:-translate-y-2 transition-transform duration-300"
+                >
+                    <div
+                        class="absolute -top-6 left-8 w-12 h-12 bg-black border border-white/10 rounded-xl flex items-center justify-center font-mono text-xl text-primary font-bold z-10"
+                    >
+                        1
+                    </div>
+                    <h3 class="text-xl font-bold mt-4 mb-3">Get Credentials</h3>
+                    <p class="text-white/50 text-sm">
+                        Create a merchant account and generate your `rk_live`
+                        and `rk_test` API keys from the dashboard.
+                    </p>
+                </div>
+                <!-- Step 2 -->
+                <div
+                    class="glass p-8 rounded-3xl border border-white/10 relative group hover:-translate-y-2 transition-transform duration-300"
+                >
+                    <div
+                        class="absolute -top-6 left-8 w-12 h-12 bg-black border border-white/10 rounded-xl flex items-center justify-center font-mono text-xl text-primary font-bold z-10"
+                    >
+                        2
+                    </div>
+                    <h3 class="text-xl font-bold mt-4 mb-3">Install SDK</h3>
+                    <p class="text-white/50 text-sm">
+                        Add our official library to your project. We support
+                        Node, PHP, .NET, Python, and Go.
+                    </p>
+                </div>
+                <!-- Step 3 -->
+                <div
+                    class="glass p-8 rounded-3xl border border-white/10 relative group hover:-translate-y-2 transition-transform duration-300"
+                >
+                    <div
+                        class="absolute -top-6 left-8 w-12 h-12 bg-black border border-white/10 rounded-xl flex items-center justify-center font-mono text-xl text-primary font-bold z-10"
+                    >
+                        3
+                    </div>
+                    <h3 class="text-xl font-bold mt-4 mb-3">Go Live</h3>
+                    <p class="text-white/50 text-sm">
+                        Switch your key from `rk_test` to `rk_live` and start
+                        processing real IQD payments instantly.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Capabilities Grid -->
+        <section class="mb-32">
+            <h2 class="text-3xl font-bold text-center mb-4">
+                Everything you need
+            </h2>
+            <p class="text-white/50 text-center mb-16">
+                Full-stack financial tools for the modern internet economy.
+            </p>
+
+            <div
+                class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+                <!-- Card 1 -->
+                <div
+                    class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-primary/50 transition-colors"
+                >
+                    <div
+                        class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 mb-6 text-2xl"
+                    >
+                        ⚡
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Real-time Webhooks</h3>
+                    <p class="text-white/50 text-sm">
+                        Listen for `payment.succeeded` events to fulfill orders
+                        instantly without polling.
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-primary/50 transition-colors"
+                >
+                    <div
+                        class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 mb-6 text-2xl"
+                    >
+                        🔒
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Tokenization (Vault)</h3>
+                    <p class="text-white/50 text-sm">
+                        Save customer cards securely for one-click checkout or
+                        recurring billing.
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-primary/50 transition-colors"
+                >
+                    <div
+                        class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 mb-6 text-2xl"
+                    >
+                        🧪
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Sandbox Mode</h3>
+                    <p class="text-white/50 text-sm">
+                        Full feature parity environment to test your integration
+                        with zero risk.
+                    </p>
+                </div>
+                <!-- Card 4 -->
+                <div
+                    class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-primary/50 transition-colors"
+                >
+                    <div
+                        class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-400 mb-6 text-2xl"
+                    >
+                        ↩️
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Instant Refunds</h3>
+                    <p class="text-white/50 text-sm">
+                        Programmatically refund transactions to Mobile Wallets
+                        or Cards.
+                    </p>
+                </div>
+                <!-- Card 5 -->
+                <div
+                    class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-primary/50 transition-colors"
+                >
+                    <div
+                        class="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 mb-6 text-2xl"
+                    >
+                        🔗
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Payment Links</h3>
+                    <p class="text-white/50 text-sm">
+                        Fallback to no-code links if building a full checkout UI
+                        is overkill.
+                    </p>
+                </div>
+                <!-- Card 6 -->
+                <div
+                    class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-primary/50 transition-colors"
+                >
+                    <div
+                        class="w-12 h-12 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 mb-6 text-2xl"
+                    >
+                        📜
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Audit Logs</h3>
+                    <p class="text-white/50 text-sm">
+                        Every API request is logged with full request/response
+                        payloads for debugging.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sandbox Tools -->
+        <section id="sandbox" class="max-w-4xl mx-auto">
+            <div class="glass p-10 rounded-3xl border border-white/10">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-2">🧪 Test Data</h2>
+                        <p class="text-white/50">
+                            Use these values in Sandbox mode to trigger specific
+                            scenarions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="border-b border-white/10">
+                                <th
+                                    class="pb-4 font-mono text-sm text-white/40 uppercase"
+                                    >Scenario</th
+                                >
+                                <th
+                                    class="pb-4 font-mono text-sm text-white/40 uppercase"
+                                    >Value</th
+                                >
+                                <th
+                                    class="pb-4 font-mono text-sm text-white/40 uppercase"
+                                    >Description</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/5">
+                            <tr>
+                                <td class="py-4 text-green-400 font-bold"
+                                    >Success</td
+                                >
+                                <td
+                                    class="py-4 font-mono bg-white/5 rounded px-2"
+                                    >4242 4242 4242 4242</td
+                                >
+                                <td class="py-4 text-white/60 text-sm"
+                                    >Standard localized VISA card success.</td
+                                >
+                            </tr>
+                            <tr>
+                                <td class="py-4 text-red-400 font-bold"
+                                    >Decline</td
+                                >
+                                <td
+                                    class="py-4 font-mono bg-white/5 rounded px-2"
+                                    >4000 0566 5566 5556</td
+                                >
+                                <td class="py-4 text-white/60 text-sm"
+                                    >Generic bank decline.</td
+                                >
+                            </tr>
+                            <tr>
+                                <td class="py-4 text-yellow-400 font-bold"
+                                    >Insufficient Funds</td
+                                >
+                                <td
+                                    class="py-4 font-mono bg-white/5 rounded px-2"
+                                    >4000 0000 0000 0002</td
+                                >
+                                <td class="py-4 text-white/60 text-sm"
+                                    >Returns `insufficient_funds` error.</td
+                                >
+                            </tr>
+                            <tr>
+                                <td class="py-4 text-primary font-bold"
+                                    >Magic Amount</td
+                                >
+                                <td
+                                    class="py-4 font-mono bg-white/5 rounded px-2"
+                                    >1,000 IQD</td
+                                >
+                                <td class="py-4 text-white/60 text-sm"
+                                    >Always succeeds, regardless of card.</td
+                                >
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
     </main>
 </Layout>

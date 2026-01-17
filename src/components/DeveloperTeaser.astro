@@ -1,0 +1,134 @@
+---
+const codeSnippet = `
+// Initialize the Rasedi Client
+const rasedi = new Rasedi({
+    apiKey: "rk_live_...",
+    region: "iq"
+});
+
+// Create a Payment
+const payment = await rasedi.payments.create({
+    amount: 25000,
+    currency: "IQD",
+    method: "zaincash",
+    description: "Premium Plan"
+});
+`;
+---
+
+<section class="py-32 relative overflow-hidden">
+    <!-- Background Decor -->
+    <div
+        class="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent blur-3xl -z-10"
+    >
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center gap-16">
+            <!-- Content -->
+            <div class="flex-1 space-y-8">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-primary animate-fade-in"
+                >
+                    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"
+                    ></span>
+                    <span>Developer First API</span>
+                </div>
+
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tight">
+                    Built for <span class="text-primary">Builders</span>. <br />
+                    Not just Bankers.
+                </h2>
+
+                <p class="text-white/60 text-lg leading-relaxed max-w-lg">
+                    Forget complex SOAP integrations and PDF documentation.
+                    Rasedi provides a modern, typesafe REST API that you can
+                    integrate in minutes, not months.
+                </p>
+
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-3 text-white/80">
+                        <div
+                            class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs"
+                        >
+                            ✓
+                        </div>
+                        <span>Typescript & Node.js SDKs</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-white/80">
+                        <div
+                            class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs"
+                        >
+                            ✓
+                        </div>
+                        <span>Real-time Webhooks</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-white/80">
+                        <div
+                            class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs"
+                        >
+                            ✓
+                        </div>
+                        <span>Instant Sandbox Access</span>
+                    </li>
+                </ul>
+
+                <div class="pt-4">
+                    <a
+                        href="/developers"
+                        class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all group"
+                    >
+                        Read the Documentation
+                        <span class="text-xl">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Visual / Code -->
+            <div class="flex-1 w-full max-w-lg relative perspective-1000">
+                <div
+                    class="glass rounded-2xl border border-white/10 overflow-hidden transform rotate-y-6 hover:rotate-y-0 transition-transform duration-700 shadow-2xl"
+                >
+                    <div
+                        class="flex items-center gap-2 px-4 py-3 bg-black/40 border-b border-white/5"
+                    >
+                        <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/50">
+                        </div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+                        <span class="text-xs text-white/20 font-mono ml-2"
+                            >install.ts</span
+                        >
+                    </div>
+                    <div
+                        class="p-6 bg-black/80 font-mono text-sm overflow-x-auto"
+                    >
+                        <pre
+                            class="text-blue-100"><code set:html={codeSnippet.trim()} /></pre>
+                    </div>
+                </div>
+
+                <!-- Floating Badge -->
+                <div
+                    class="absolute -bottom-6 -right-6 glass px-6 py-4 rounded-xl border border-white/10 flex items-center gap-3 animate-float"
+                >
+                    <div class="text-3xl">🚀</div>
+                    <div>
+                        <div class="text-xs text-white/40 uppercase font-bold">
+                            Uptime
+                        </div>
+                        <div class="text-primary font-mono font-bold">
+                            99.99%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .rotate-y-6 {
+        transform: rotateY(-6deg) rotateX(2deg);
+    }
+</style>

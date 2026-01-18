@@ -1,0 +1,131 @@
+---
+
+---
+
+<div
+    class="aurora-container absolute inset-0 overflow-hidden pointer-events-none select-none"
+>
+    <!-- Gradient Blobs -->
+    <div class="aurora-blob blob-1"></div>
+    <div class="aurora-blob blob-2"></div>
+    <div class="aurora-blob blob-3"></div>
+</div>
+
+<style>
+    .aurora-container {
+        z-index: -10;
+        /* Blur applied generally to smooth everything */
+        filter: blur(80px);
+        opacity: 0.6;
+    }
+
+    .aurora-blob {
+        position: absolute;
+        border-radius: 50%;
+        animation: move-aurora 20s infinite ease-in-out alternate;
+    }
+
+    /* 
+       Theme: Dark Mode (Default) 
+       Vibrant, deep colors to glow against the black background 
+    */
+    .blob-1 {
+        top: -10%;
+        left: -10%;
+        width: 50vw;
+        height: 50vw;
+        background: radial-gradient(
+            circle,
+            var(--color-primary) 0%,
+            transparent 70%
+        );
+        opacity: 0.3;
+        animation-duration: 25s;
+    }
+
+    .blob-2 {
+        bottom: -10%;
+        right: -10%;
+        width: 60vw;
+        height: 60vw;
+        background: radial-gradient(
+            circle,
+            #7c3aed 0%,
+            transparent 70%
+        ); /* Deep Purple */
+        opacity: 0.2;
+        animation-duration: 35s;
+        animation-delay: -5s;
+    }
+
+    .blob-3 {
+        top: 20%;
+        right: 20%;
+        width: 40vw;
+        height: 40vw;
+        background: radial-gradient(
+            circle,
+            #3b82f6 0%,
+            transparent 70%
+        ); /* Blue */
+        opacity: 0.2;
+        animation-duration: 30s;
+        animation-delay: -10s;
+    }
+
+    /* 
+       Theme: Light Mode 
+       Adjust colors to be softer/pastel so they don't look muddy on white.
+       We target the :root[data-theme='light'] selector which is set by the toggle.
+    */
+    :global([data-theme="light"]) .aurora-container {
+        opacity: 0.5; /* Lower overall opacity for lightness */
+        filter: blur(100px); /* Extream blur for watercolor effect */
+    }
+
+    :global([data-theme="light"]) .blob-1 {
+        background: radial-gradient(
+            circle,
+            #34d399 0%,
+            transparent 70%
+        ); /* Emerald-400 */
+        opacity: 0.3;
+    }
+
+    :global([data-theme="light"]) .blob-2 {
+        background: radial-gradient(
+            circle,
+            #a78bfa 0%,
+            transparent 70%
+        ); /* Violet-400 */
+        opacity: 0.3;
+    }
+
+    :global([data-theme="light"]) .blob-3 {
+        background: radial-gradient(
+            circle,
+            #60a5fa 0%,
+            transparent 70%
+        ); /* Blue-400 */
+        opacity: 0.3;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translate(0, 0) rotate(0deg);
+            scale: 1;
+        }
+        33% {
+            transform: translate(30px, -50px) rotate(10deg);
+            scale: 1.1;
+        }
+        66% {
+            transform: translate(-20px, 20px) rotate(-5deg);
+            scale: 0.9;
+        }
+        100% {
+            transform: translate(0, 0) rotate(0deg);
+            scale: 1;
+        }
+    }
+</style>

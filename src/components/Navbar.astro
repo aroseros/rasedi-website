@@ -1,5 +1,5 @@
 ---
-
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <nav class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 px-4">
@@ -19,30 +19,38 @@
 
         <!-- Links -->
         <div
-            class="hidden md:flex items-center gap-8 text-sm font-medium text-white/70"
+            class="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--color-text-muted)]"
         >
-            <a href="/features" class="hover:text-white transition-colors"
+            <a
+                href="/features"
+                class="hover:text-[var(--color-text-main)] transition-colors"
                 >Features</a
             >
-            <a href="/developers" class="hover:text-white transition-colors"
+            <a
+                href="/developers"
+                class="hover:text-[var(--color-text-main)] transition-colors"
                 >Developers</a
             >
-            <a href="/company" class="hover:text-white transition-colors"
+            <a
+                href="/company"
+                class="hover:text-[var(--color-text-main)] transition-colors"
                 >Company</a
             >
         </div>
 
         <!-- Actions -->
         <div class="flex items-center gap-4">
+            <ThemeToggle />
+
             <a
                 href="https://dashboard.rasedi.com"
-                class="text-sm font-medium text-white/70 hover:text-white transition-colors hidden sm:block"
+                class="text-sm font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text-main)] transition-colors hidden sm:block"
             >
                 Login
             </a>
             <a
                 href="/contact"
-                class="bg-white/10 hover:bg-white/20 text-white text-sm font-bold px-5 py-2 rounded-full transition-all border border-white/10 hover:border-white/20 active:scale-95 hidden sm:inline-flex"
+                class="bg-[var(--color-surface)] hover:bg-[var(--color-surface-hover)] text-[var(--color-text-main)] text-sm font-bold px-5 py-2 rounded-full transition-all border border-[var(--color-border)] hover:border-primary/30 active:scale-95 hidden sm:inline-flex"
             >
                 Get Started
             </a>

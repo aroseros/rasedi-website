@@ -12,7 +12,7 @@ import step4 from "../assets/journey/step4.png";
             <h2 class="text-4xl md:text-5xl font-bold mb-6">
                 How It <span class="text-primary">Works</span>
             </h2>
-            <p class="text-white/60 text-xl max-w-2xl mx-auto">
+            <p class="text-[var(--color-text-muted)] text-xl max-w-2xl mx-auto">
                 From zero to revenue in four simple steps.
             </p>
         </div>
@@ -20,8 +20,12 @@ import step4 from "../assets/journey/step4.png";
         <div class="relative">
             <!-- Vertical Line -->
             <div
-                class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/50 to-transparent hidden md:block"
+                class="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-primary/30 to-transparent hidden md:block overflow-hidden"
             >
+                <div
+                    class="absolute inset-0 w-full h-1/2 bg-gradient-to-b from-transparent via-primary to-transparent animate-data-flow"
+                >
+                </div>
             </div>
 
             <!-- Steps -->
@@ -31,12 +35,14 @@ import step4 from "../assets/journey/step4.png";
                     class="journey-step relative grid md:grid-cols-2 gap-12 items-center"
                 >
                     <div
-                        class="glass-card p-8 md:text-right reveal-left order-2 md:order-1"
+                        class="glass-card p-8 md:text-right reveal-left order-2 md:order-1 transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(0,220,130,0.1)] group"
                     >
-                        <h3 class="text-2xl font-bold mb-4 text-white">
+                        <h3
+                            class="text-2xl font-bold mb-4 text-[var(--color-text-main)] group-hover:text-primary transition-colors"
+                        >
                             1. Create Merchant Account
                         </h3>
-                        <p class="text-white/60">
+                        <p class="text-[var(--color-text-muted)]">
                             Sign up in seconds. No paperwork required for
                             initial access. Just your email and phone number.
                         </p>
@@ -45,7 +51,7 @@ import step4 from "../assets/journey/step4.png";
                         class="relative flex justify-center md:justify-start reveal-right order-1 md:order-2"
                     >
                         <div
-                            class="w-12 h-12 bg-primary rounded-full absolute -left-[30px] top-1/2 -translate-y-1/2 border-4 border-black z-10 hidden md:block flex items-center justify-center font-bold text-black"
+                            class="journey-number w-12 h-12 bg-[var(--color-surface)] border-2 border-primary/50 rounded-full absolute -left-[26px] top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center font-bold text-primary shadow-[0_0_15px_rgba(0,220,130,0.3)]"
                         >
                             1
                         </div>
@@ -79,7 +85,7 @@ import step4 from "../assets/journey/step4.png";
                         class="order-1 md:order-1 relative flex justify-center md:justify-end reveal-left"
                     >
                         <div
-                            class="w-12 h-12 bg-primary rounded-full absolute -right-[30px] top-1/2 -translate-y-1/2 border-4 border-black z-10 hidden md:block flex items-center justify-center font-bold text-black"
+                            class="journey-number w-12 h-12 bg-[var(--color-surface)] border-2 border-primary/50 rounded-full absolute -right-[26px] top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center font-bold text-primary shadow-[0_0_15px_rgba(0,220,130,0.3)]"
                         >
                             2
                         </div>
@@ -103,11 +109,15 @@ import step4 from "../assets/journey/step4.png";
                             </div>
                         </div>
                     </div>
-                    <div class="order-2 md:order-2 glass-card p-8 reveal-right">
-                        <h3 class="text-2xl font-bold mb-4 text-white">
+                    <div
+                        class="order-2 md:order-2 glass-card p-8 reveal-right transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(0,220,130,0.1)] group"
+                    >
+                        <h3
+                            class="text-2xl font-bold mb-4 text-[var(--color-text-main)] group-hover:text-primary transition-colors"
+                        >
                             2. Get KYC Verified
                         </h3>
-                        <p class="text-white/60">
+                        <p class="text-[var(--color-text-muted)]">
                             Automated identity verification. Upload your ID and
                             business registration. Approved in under 24 hours.
                         </p>
@@ -119,12 +129,14 @@ import step4 from "../assets/journey/step4.png";
                     class="journey-step relative grid md:grid-cols-2 gap-12 items-center"
                 >
                     <div
-                        class="glass-card p-8 md:text-right reveal-left order-2 md:order-1"
+                        class="glass-card p-8 md:text-right reveal-left order-2 md:order-1 transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(0,220,130,0.1)] group"
                     >
-                        <h3 class="text-2xl font-bold mb-4 text-white">
+                        <h3
+                            class="text-2xl font-bold mb-4 text-[var(--color-text-main)] group-hover:text-primary transition-colors"
+                        >
                             3. Create Payment Link
                         </h3>
-                        <p class="text-white/60">
+                        <p class="text-[var(--color-text-muted)]">
                             Generate a secure link from your dashboard. Set
                             amount, currency, and description. No coding needed.
                         </p>
@@ -133,7 +145,7 @@ import step4 from "../assets/journey/step4.png";
                         class="relative flex justify-center md:justify-start reveal-right order-1 md:order-2"
                     >
                         <div
-                            class="w-12 h-12 bg-primary rounded-full absolute -left-[30px] top-1/2 -translate-y-1/2 border-4 border-black z-10 hidden md:block flex items-center justify-center font-bold text-black"
+                            class="journey-number w-12 h-12 bg-[var(--color-surface)] border-2 border-primary/50 rounded-full absolute -left-[26px] top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center font-bold text-primary shadow-[0_0_15px_rgba(0,220,130,0.3)]"
                         >
                             3
                         </div>
@@ -158,7 +170,7 @@ import step4 from "../assets/journey/step4.png";
                         class="order-1 md:order-1 relative flex justify-center md:justify-end reveal-left"
                     >
                         <div
-                            class="w-12 h-12 bg-primary rounded-full absolute -right-[30px] top-1/2 -translate-y-1/2 border-4 border-black z-10 hidden md:block flex items-center justify-center font-bold text-black"
+                            class="journey-number w-12 h-12 bg-[var(--color-surface)] border-2 border-primary/50 rounded-full absolute -right-[26px] top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center font-bold text-primary shadow-[0_0_15px_rgba(0,220,130,0.3)]"
                         >
                             4
                         </div>
@@ -181,11 +193,15 @@ import step4 from "../assets/journey/step4.png";
                             </div>
                         </div>
                     </div>
-                    <div class="order-2 md:order-2 glass-card p-8 reveal-right">
-                        <h3 class="text-2xl font-bold mb-4 text-white">
+                    <div
+                        class="order-2 md:order-2 glass-card p-8 reveal-right transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(0,220,130,0.1)] group"
+                    >
+                        <h3
+                            class="text-2xl font-bold mb-4 text-[var(--color-text-main)] group-hover:text-primary transition-colors"
+                        >
                             4. Get Paid
                         </h3>
-                        <p class="text-white/60">
+                        <p class="text-[var(--color-text-muted)]">
                             Funds settle instantly to your Rasedi wallet.
                             Withdraw to your bank or ZainCash anytime.
                         </p>
@@ -237,4 +253,66 @@ import step4 from "../assets/journey/step4.png";
             },
         );
     });
+    // Animate Data Pipe
+    gsap.to(".animate-data-flow", {
+        y: "100%",
+        duration: 3,
+        repeat: -1,
+        ease: "linear",
+    });
+
+    // Highlight active step numbers on scroll
+    gsap.utils.toArray(".journey-step").forEach((step: any, i) => {
+        const number = step.querySelector(".journey-number");
+        if (number) {
+            ScrollTrigger.create({
+                trigger: step,
+                start: "top center",
+                end: "bottom center",
+                onEnter: () =>
+                    gsap.to(number, {
+                        backgroundColor: "var(--color-primary)",
+                        color: "#000",
+                        scale: 1.2,
+                        duration: 0.3,
+                    }),
+                onLeave: () =>
+                    gsap.to(number, {
+                        backgroundColor: "var(--color-surface)",
+                        color: "var(--color-primary)",
+                        scale: 1,
+                        duration: 0.3,
+                    }),
+                onEnterBack: () =>
+                    gsap.to(number, {
+                        backgroundColor: "var(--color-primary)",
+                        color: "#000",
+                        scale: 1.2,
+                        duration: 0.3,
+                    }),
+                onLeaveBack: () =>
+                    gsap.to(number, {
+                        backgroundColor: "var(--color-surface)",
+                        color: "var(--color-primary)",
+                        scale: 1,
+                        duration: 0.3,
+                    }),
+            });
+        }
+    });
 </script>
+
+<style>
+    /* Custom animation for data flow if JS unused fallback */
+    @keyframes data-flow {
+        0% {
+            transform: translateY(-100%);
+        }
+        100% {
+            transform: translateY(100%);
+        }
+    }
+    .animate-data-flow {
+        animation: data-flow 3s linear infinite;
+    }
+</style>

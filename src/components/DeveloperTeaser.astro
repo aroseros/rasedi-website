@@ -28,7 +28,7 @@ const payment = await rasedi.payments.create({
             <!-- Content -->
             <div class="flex-1 space-y-8">
                 <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-primary animate-fade-in"
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] text-xs font-mono text-primary animate-fade-in"
                 >
                     <span class="w-2 h-2 rounded-full bg-primary animate-pulse"
                     ></span>
@@ -40,14 +40,18 @@ const payment = await rasedi.payments.create({
                     Not just Bankers.
                 </h2>
 
-                <p class="text-white/60 text-lg leading-relaxed max-w-lg">
+                <p
+                    class="text-[var(--color-text-muted)] text-lg leading-relaxed max-w-lg"
+                >
                     Forget complex SOAP integrations and PDF documentation.
                     Rasedi provides a modern, typesafe REST API that you can
                     integrate in minutes, not months.
                 </p>
 
                 <ul class="space-y-4">
-                    <li class="flex items-center gap-3 text-white/80">
+                    <li
+                        class="flex items-center gap-3 text-[var(--color-text-muted)]"
+                    >
                         <div
                             class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs"
                         >
@@ -55,7 +59,9 @@ const payment = await rasedi.payments.create({
                         </div>
                         <span>Typescript & Node.js SDKs</span>
                     </li>
-                    <li class="flex items-center gap-3 text-white/80">
+                    <li
+                        class="flex items-center gap-3 text-[var(--color-text-muted)]"
+                    >
                         <div
                             class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs"
                         >
@@ -63,7 +69,9 @@ const payment = await rasedi.payments.create({
                         </div>
                         <span>Real-time Webhooks</span>
                     </li>
-                    <li class="flex items-center gap-3 text-white/80">
+                    <li
+                        class="flex items-center gap-3 text-[var(--color-text-muted)]"
+                    >
                         <div
                             class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs"
                         >
@@ -87,22 +95,24 @@ const payment = await rasedi.payments.create({
             <!-- Visual / Code -->
             <div class="flex-1 w-full max-w-lg relative perspective-1000">
                 <div
-                    class="glass rounded-2xl border border-white/10 overflow-hidden transform rotate-y-6 hover:rotate-y-0 transition-transform duration-700 shadow-2xl"
+                    class="glass rounded-2xl border border-[var(--color-border)] overflow-hidden transform rotate-y-6 hover:rotate-y-0 transition-transform duration-700 shadow-2xl"
                 >
                     <div
-                        class="flex items-center gap-2 px-4 py-3 bg-black/40 border-b border-white/5"
+                        class="flex items-center gap-2 px-4 py-3 bg-[var(--color-surface)] border-b border-[var(--color-border)]"
                     >
                         <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
                         <div class="w-3 h-3 rounded-full bg-yellow-500/50">
                         </div>
                         <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
-                        <span class="text-xs text-white/20 font-mono ml-2"
+                        <span
+                            class="text-xs text-[var(--color-text-muted)] font-mono ml-2"
                             >install.ts</span
                         >
                     </div>
                     <div
-                        class="p-6 bg-black/80 font-mono text-sm overflow-x-auto"
+                        class="p-6 bg-[#0E0E10] font-mono text-sm overflow-x-auto"
                     >
+                        <!-- Note: Code block always dark for readability -->
                         <pre
                             class="text-blue-100"><code set:html={codeSnippet.trim()} /></pre>
                     </div>
@@ -110,11 +120,13 @@ const payment = await rasedi.payments.create({
 
                 <!-- Floating Badge -->
                 <div
-                    class="absolute -bottom-6 -right-6 glass px-6 py-4 rounded-xl border border-white/10 flex items-center gap-3 animate-float"
+                    class="absolute -bottom-6 -right-6 glass px-6 py-4 rounded-xl border border-[var(--color-border)] flex items-center gap-3 animate-float"
                 >
                     <div class="text-3xl">🚀</div>
                     <div>
-                        <div class="text-xs text-white/40 uppercase font-bold">
+                        <div
+                            class="text-xs text-[var(--color-text-muted)] uppercase font-bold"
+                        >
                             Uptime
                         </div>
                         <div class="text-primary font-mono font-bold">

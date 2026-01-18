@@ -1,6 +1,6 @@
 # Project: Rasedi (MiroPAY) Marketing Site Architecture
 **Role:** Lead Frontend Architect & Creative Director (Apple/Stripe Design Specialist)
-**Target URL for Context:** https://docs.pallawan.com/
+**Target URL for Context:** https://test.docs.rasedi.com/
 
 ## 1. Core Objective
 Build a world-class, high-conversion marketing website for **Rasedi**. This is a **High-Performance Astro Site** designed for speed and SEO dominance. It must bridge the gap between "Developer Trust" (clean docs, fast APIs) and "Business Ease" (no-code tools).

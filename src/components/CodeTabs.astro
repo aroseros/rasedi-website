@@ -54,21 +54,21 @@ var charge = await client.Charges.CreateAsync(new ChargeCreateOptions
 ---
 
 <code-tabs
-    class="glass block rounded-xl border border-white/10 overflow-hidden shadow-2xl"
+    class="glass block rounded-xl border border-[var(--color-border)] overflow-hidden shadow-xl my-8"
     data-snippets={JSON.stringify(snippets)}
 >
     <!-- Tab Header -->
     <div
-        class="flex items-center bg-white/5 border-b border-white/5 overflow-x-auto"
+        class="flex items-center bg-[var(--color-surface)] border-b border-[var(--color-border)] overflow-x-auto"
     >
         <button
-            class="tab-btn px-6 py-3 text-sm font-mono text-primary border-b-2 border-primary transition-colors hover:bg-white/5"
+            class="tab-btn px-6 py-3 text-sm font-mono text-primary border-b-2 border-primary transition-colors hover:bg-[var(--color-surface-hover)]"
             data-tab="node"
         >
             Node.js
         </button>
         <button
-            class="tab-btn px-6 py-3 text-sm font-mono text-white/50 border-b-2 border-transparent transition-colors hover:text-white hover:bg-white/5"
+            class="tab-btn px-6 py-3 text-sm font-mono text-[var(--color-text-muted)] border-b-2 border-transparent transition-colors hover:text-[var(--color-text-main)] hover:bg-[var(--color-surface-hover)]"
             data-tab="php"
         >
             PHP (Laravel)
@@ -83,7 +83,7 @@ var charge = await client.Charges.CreateAsync(new ChargeCreateOptions
 
     <!-- Code Content -->
     <div
-        class="p-6 bg-black/60 font-mono text-sm overflow-x-auto relative group"
+        class="p-6 bg-[#0d1117] font-mono text-sm overflow-x-auto relative group"
     >
         <div
             class="absolute right-4 top-4 opacity-0 group-hover:opacity-100 transition-opacity"
@@ -122,9 +122,15 @@ var charge = await client.Charges.CreateAsync(new ChargeCreateOptions
                     // Update Active State
                     tabs.forEach((t) => {
                         t.classList.remove("text-primary", "border-primary");
-                        t.classList.add("text-white/50", "border-transparent");
+                        t.classList.add(
+                            "text-[var(--color-text-muted)]",
+                            "border-transparent",
+                        );
                     });
-                    tab.classList.remove("text-white/50", "border-transparent");
+                    tab.classList.remove(
+                        "text-[var(--color-text-muted)]",
+                        "border-transparent",
+                    );
                     tab.classList.add("text-primary", "border-primary");
 
                     // Update Content

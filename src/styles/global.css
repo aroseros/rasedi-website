@@ -6,22 +6,19 @@
     --font-sans: "Inter", "system-ui", "sans-serif";
     --font-mono: "JetBrains Mono", "monospace";
 
-    /* Semantic Colors: Light Mode Default (Clean Paper) */
-    --color-bg: #FFFFFF;
-    --color-surface: #F5F5F7;
-    --color-surface-hover: #EAEAEB;
-    --color-border: rgba(0, 0, 0, 0.08);
-
-    --color-text-main: #0A0A0A;
-    --color-text-muted: rgba(10, 10, 10, 0.6);
-    --color-text-inverted: #FFFFFF;
-
-    --color-primary: #00DC82;
-    --color-primary-glow: rgba(0, 220, 130, 0.3);
-    --color-brand-purple: #7B42F6;
-
-    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-    --shadow-neon: 0 0 20px rgba(0, 220, 130, 0.2);
+    /* Map Tailwind utilities to the CSS variables */
+    --color-bg: var(--color-bg);
+    --color-surface: var(--color-surface);
+    --color-surface-hover: var(--color-surface-hover);
+    --color-border: var(--color-border);
+    --color-text-main: var(--color-text-main);
+    --color-text-muted: var(--color-text-muted);
+    --color-text-inverted: var(--color-text-inverted);
+    --color-primary: var(--color-primary);
+    --color-primary-glow: var(--color-primary-glow);
+    --color-brand-purple: var(--color-brand-purple);
+    --shadow-glass: var(--shadow-glass);
+    --shadow-neon: var(--shadow-neon);
 
     --animate-float: float 6s ease-in-out infinite;
 
@@ -38,51 +35,49 @@
     }
 }
 
-/* Dark Mode Overrides (Radical Minimalism) */
-:root.dark {
-    --color-bg: #050505;
-    --color-surface: #0A0A0A;
-    /* Was #0A0A0A hardcoded */
-    --color-surface-hover: #151515;
-    --color-border: rgba(255, 255, 255, 0.1);
+@layer base {
+    :root {
+        /* Light Mode (Default) */
+        --color-bg: #FFFFFF;
+        --color-surface: #F5F5F7;
+        --color-surface-hover: #EAEAEB;
+        --color-border: rgba(0, 0, 0, 0.08);
 
-    --color-text-main: #FFFFFF;
-    --color-text-muted: rgba(255, 255, 255, 0.6);
-    --color-text-inverted: #000000;
+        --color-text-main: #0A0A0A;
+        --color-text-muted: rgba(10, 10, 10, 0.6);
+        --color-text-inverted: #FFFFFF;
 
-    --color-primary-glow: rgba(0, 220, 130, 0.5);
+        --color-primary: #00DC82;
+        --color-primary-glow: rgba(0, 220, 130, 0.3);
+        --color-brand-purple: #7B42F6;
 
-    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    --shadow-neon: 0 0 20px rgba(0, 220, 130, 0.3);
+        --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+        --shadow-neon: 0 0 20px rgba(0, 220, 130, 0.2);
+    }
 
-    --color-brand-purple: #7B42F6;
+    /* Dark Mode Overrides */
+    :root.dark {
+        --color-bg: #050505;
+        --color-surface: #0A0A0A;
+        --color-surface-hover: #151515;
+        --color-border: rgba(255, 255, 255, 0.1);
 
-    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    --shadow-neon: 0 0 20px rgba(0, 220, 130, 0.3);
+        --color-text-main: #FFFFFF;
+        --color-text-muted: rgba(255, 255, 255, 0.6);
+        --color-text-inverted: #000000;
 
-    --animate-float: float 6s ease-in-out infinite;
+        --color-primary-glow: rgba(0, 220, 130, 0.5);
 
-    @keyframes float {
-
-        0%,
-        100% {
-            transform: translateY(0);
-        }
-
-        50% {
-            transform: translateY(-20px);
-        }
+        --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        --shadow-neon: 0 0 20px rgba(0, 220, 130, 0.3);
     }
 }
 
 @layer utilities {
     .glass {
         background: var(--color-surface);
-        /* Fallback or base */
-        background-color: rgba(var(--color-surface), 0.7);
-        /* Needs RGB vars or relative-color-syntax */
-        /* For now, let's use the variable directly if it includes alpha, or just the variable */
-        background: var(--color-surface);
+        /* Fallback for browsers supporting color-mix */
+        background-color: color-mix(in srgb, var(--color-surface), transparent 30%);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border: 1px solid var(--color-border);

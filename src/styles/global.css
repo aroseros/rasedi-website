@@ -1,9 +1,10 @@
 @import "tailwindcss";
 @import "@fontsource/inter";
 @import "@fontsource/jetbrains-mono";
+@import "@fontsource/ibm-plex-sans-arabic";
 
 @theme {
-    --font-sans: "Inter", "system-ui", "sans-serif";
+    --font-sans: var(--font-family-sans);
     --font-mono: "JetBrains Mono", "monospace";
 
     /* Map Tailwind utilities to the CSS variables */
@@ -37,6 +38,8 @@
 
 @layer base {
     :root {
+        --font-family-sans: "Inter", "system-ui", "sans-serif";
+
         /* Light Mode (Default) */
         --color-bg: #FFFFFF;
         --color-surface: #F5F5F7;
@@ -53,6 +56,12 @@
 
         --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
         --shadow-neon: 0 0 20px rgba(0, 220, 130, 0.2);
+    }
+
+    /* Language Overrides for Arabic & Kurdish */
+    :root[lang="ar"],
+    :root[lang="ku"] {
+        --font-family-sans: "IBM Plex Sans Arabic", "Inter", "system-ui", "sans-serif";
     }
 
     /* Dark Mode Overrides */

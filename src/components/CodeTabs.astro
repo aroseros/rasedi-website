@@ -1,5 +1,9 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
 const { id = "code-tabs" } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const snippets = {
     node: `
@@ -56,6 +60,7 @@ var charge = await client.Charges.CreateAsync(new ChargeCreateOptions
 <code-tabs
     class="glass block rounded-xl border border-[var(--color-border)] overflow-hidden shadow-xl my-8"
     data-snippets={JSON.stringify(snippets)}
+    data-copied-text={t("codetabs.copied")}
 >
     <!-- Tab Header -->
     <div
@@ -65,19 +70,19 @@ var charge = await client.Charges.CreateAsync(new ChargeCreateOptions
             class="tab-btn px-6 py-3 text-sm font-mono text-primary border-b-2 border-primary transition-colors hover:bg-[var(--color-surface-hover)]"
             data-tab="node"
         >
-            Node.js
+            {t("codetabs.label.node")}
         </button>
         <button
             class="tab-btn px-6 py-3 text-sm font-mono text-[var(--color-text-muted)] border-b-2 border-transparent transition-colors hover:text-[var(--color-text-main)] hover:bg-[var(--color-surface-hover)]"
             data-tab="php"
         >
-            PHP (Laravel)
+            {t("codetabs.label.php")}
         </button>
         <button
             class="tab-btn px-6 py-3 text-sm font-mono text-white/50 border-b-2 border-transparent transition-colors hover:text-white hover:bg-white/5"
             data-tab="csharp"
         >
-            C# .NET
+            {t("codetabs.label.csharp")}
         </button>
     </div>
 
@@ -90,12 +95,13 @@ var charge = await client.Charges.CreateAsync(new ChargeCreateOptions
         >
             <button
                 class="copy-btn text-xs text-white/40 hover:text-white uppercase tracking-wider"
-                >Copy</button
+                >{t("codetabs.copy")}</button
             >
         </div>
 
         <pre
-            class="text-blue-100 min-h-[300px]"><code>{snippets.node.trim()}</code></pre>
+            class="text-blue-100 min-h-[300px] text-left ltr"
+            dir="ltr"><code>{snippets.node.trim()}</code></pre>
     </div>
 </code-tabs>
 
@@ -149,7 +155,7 @@ var charge = await client.Charges.CreateAsync(new ChargeCreateOptions
                         codeBlock.textContent || "",
                     );
                     const originalText = copyBtn.textContent;
-                    copyBtn.textContent = "Copied!";
+                    copyBtn.textContent = this.dataset.copiedText || "Copied!";
                     setTimeout(
                         () => (copyBtn.textContent = originalText),
                         2000,

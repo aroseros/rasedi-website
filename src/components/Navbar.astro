@@ -1,5 +1,16 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const localizePath = (path: string) => {
+    if (path.startsWith("http")) return path;
+    if (lang === "en") return path;
+    return `/${lang}${path}`;
+};
 ---
 
 <nav class="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 px-4">
@@ -8,7 +19,7 @@ import ThemeToggle from "./ThemeToggle.astro";
     >
         <!-- Logo -->
         <a
-            href="/"
+            href={localizePath("/")}
             class="text-xl font-bold tracking-tight flex items-center gap-2 group"
         >
             <span
@@ -22,37 +33,43 @@ import ThemeToggle from "./ThemeToggle.astro";
             class="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--color-text-muted)]"
         >
             <a
-                href="/features"
+                href={localizePath("/features")}
                 class="hover:text-[var(--color-text-main)] transition-colors"
-                >Features</a
+                >{t("nav.features")}</a
             >
             <a
-                href="/developers"
+                href={localizePath("/developers")}
                 class="hover:text-[var(--color-text-main)] transition-colors"
-                >Developers</a
+                >{t("nav.developers")}</a
             >
             <a
-                href="/company"
+                href={localizePath("/company")}
                 class="hover:text-[var(--color-text-main)] transition-colors"
-                >Company</a
+                >{t("nav.company")}</a
+            >
+            <a
+                href={localizePath("/contact")}
+                class="hover:text-[var(--color-text-main)] transition-colors"
+                >{t("nav.contact")}</a
             >
         </div>
 
         <!-- Actions -->
         <div class="flex items-center gap-4">
+            <LanguageSwitcher />
             <ThemeToggle />
 
             <a
                 href="https://dashboard.rasedi.com"
                 class="text-sm font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text-main)] transition-colors hidden sm:block"
             >
-                Login
+                {t("nav.login")}
             </a>
             <a
-                href="/contact"
+                href={localizePath("/contact")}
                 class="bg-[var(--color-surface)] hover:bg-[var(--color-surface-hover)] text-[var(--color-text-main)] text-sm font-bold px-5 py-2 rounded-full transition-all border border-[var(--color-border)] hover:border-primary/30 active:scale-95 hidden sm:inline-flex"
             >
-                Get Started
+                {t("nav.getStarted")}
             </a>
 
             <!-- Mobile Menu Button -->
@@ -92,24 +109,24 @@ import ThemeToggle from "./ThemeToggle.astro";
         >
             <nav class="flex flex-col gap-6">
                 <a
-                    href="/"
+                    href={localizePath("/")}
                     class="text-3xl font-bold text-white hover:text-primary transition-colors mobile-link"
-                    >Home</a
+                    >{t("nav.home")}</a
                 >
                 <a
-                    href="/features"
+                    href={localizePath("/features")}
                     class="text-3xl font-bold text-white hover:text-primary transition-colors mobile-link"
-                    >Features</a
+                    >{t("nav.features")}</a
                 >
                 <a
-                    href="/developers"
+                    href={localizePath("/developers")}
                     class="text-3xl font-bold text-white hover:text-primary transition-colors mobile-link"
-                    >Developers</a
+                    >{t("nav.developers")}</a
                 >
                 <a
-                    href="/company"
+                    href={localizePath("/company")}
                     class="text-3xl font-bold text-white hover:text-primary transition-colors mobile-link"
-                    >Company</a
+                    >{t("nav.company")}</a
                 >
             </nav>
 
@@ -120,13 +137,13 @@ import ThemeToggle from "./ThemeToggle.astro";
                     href="https://dashboard.rasedi.com"
                     class="text-lg font-medium text-white/70 hover:text-white transition-colors"
                 >
-                    Login
+                    {t("nav.login")}
                 </a>
                 <a
-                    href="/contact"
+                    href={localizePath("/contact")}
                     class="bg-white text-black text-lg font-bold px-8 py-3 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-105 transition-transform"
                 >
-                    Get Started ->
+                    {t("nav.getStarted")} ->
                 </a>
             </div>
         </div>

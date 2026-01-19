@@ -6,9 +6,14 @@ interface Props {
     type?: "website" | "article";
 }
 
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const {
     title,
-    description = "Rasedi - The Financial Operating System for Modern Iraqi Commerce. Unified payments, instant payouts, and smart invoicing.",
+    description = t("seo.default.description"),
     image = "/og-image.jpg", // We need to ensure this exists or use a fallback
     type = "website",
 } = Astro.props;

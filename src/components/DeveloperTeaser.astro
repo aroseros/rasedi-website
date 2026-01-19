@@ -1,4 +1,15 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const localizePath = (path: string) => {
+    if (path.startsWith("http")) return path;
+    if (lang === "en") return path;
+    return `/${lang}${path}`;
+};
+
 const codeSnippet = `
 // Initialize the Rasedi Client
 const rasedi = new Rasedi({
@@ -32,20 +43,19 @@ const payment = await rasedi.payments.create({
                 >
                     <span class="w-2 h-2 rounded-full bg-primary animate-pulse"
                     ></span>
-                    <span>Developer First API</span>
+                    <span>{t("dev.badge")}</span>
                 </div>
 
                 <h2 class="text-4xl md:text-5xl font-bold tracking-tight">
-                    Built for <span class="text-primary">Builders</span>. <br />
-                    Not just Bankers.
+                    {t("dev.title.pre")}
+                    <span class="text-primary">{t("dev.title.highlight")}</span
+                    >{t("dev.title.post")}
                 </h2>
 
                 <p
                     class="text-[var(--color-text-muted)] text-lg leading-relaxed max-w-lg"
                 >
-                    Forget complex SOAP integrations and PDF documentation.
-                    Rasedi provides a modern, typesafe REST API that you can
-                    integrate in minutes, not months.
+                    {t("dev.description")}
                 </p>
 
                 <ul class="space-y-4">
@@ -57,7 +67,7 @@ const payment = await rasedi.payments.create({
                         >
                             ✓
                         </div>
-                        <span>Typescript & Node.js SDKs</span>
+                        <span>{t("dev.feature.1")}</span>
                     </li>
                     <li
                         class="flex items-center gap-3 text-[var(--color-text-muted)]"
@@ -67,7 +77,7 @@ const payment = await rasedi.payments.create({
                         >
                             ✓
                         </div>
-                        <span>Real-time Webhooks</span>
+                        <span>{t("dev.feature.2")}</span>
                     </li>
                     <li
                         class="flex items-center gap-3 text-[var(--color-text-muted)]"
@@ -77,17 +87,20 @@ const payment = await rasedi.payments.create({
                         >
                             ✓
                         </div>
-                        <span>Instant Sandbox Access</span>
+                        <span>{t("dev.feature.3")}</span>
                     </li>
                 </ul>
 
                 <div class="pt-4">
                     <a
-                        href="/developers"
+                        href={localizePath("/developers")}
                         class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all group"
                     >
-                        Read the Documentation
-                        <span class="text-xl">→</span>
+                        {t("dev.cta")}
+                        <span
+                            class="text-xl rtl:rotate-180 transition-transform"
+                            >→</span
+                        >
                     </a>
                 </div>
             </div>
@@ -106,13 +119,14 @@ const payment = await rasedi.payments.create({
                         <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
                         <span
                             class="text-xs text-[var(--color-text-muted)] font-mono ml-2"
-                            >install.ts</span
+                            >{t("dev.teaser.file")}</span
                         >
                     </div>
                     <div
-                        class="p-6 bg-[#0E0E10] font-mono text-sm overflow-x-auto"
+                        class="p-6 bg-[#0E0E10] font-mono text-sm overflow-x-auto text-left ltr"
+                        dir="ltr"
                     >
-                        <!-- Note: Code block always dark for readability -->
+                        <!-- Note: Code block always dark for readability, always LTR -->
                         <pre
                             class="text-blue-100"><code set:html={codeSnippet.trim()} /></pre>
                     </div>
@@ -127,7 +141,7 @@ const payment = await rasedi.payments.create({
                         <div
                             class="text-xs text-[var(--color-text-muted)] uppercase font-bold"
                         >
-                            Uptime
+                            {t("dev.uptime")}
                         </div>
                         <div class="text-primary font-mono font-bold">
                             99.99%

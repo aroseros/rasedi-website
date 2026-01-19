@@ -1,5 +1,15 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const currentYear = new Date().getFullYear();
+
+const localizePath = (path: string) => {
+    if (path.startsWith("http")) return path;
+    if (lang === "en") return path;
+    return `/${lang}${path}`;
+};
 ---
 
 <footer
@@ -21,29 +31,31 @@ const currentYear = new Date().getFullYear();
             </div>
 
             <h2 class="text-3xl md:text-5xl font-bold mb-6 relative z-10">
-                Ready to monetize in <span class="text-primary">Iraq</span>?
+                {t("footer.cta.headline.pre")}
+                <span class="text-primary"
+                    >{t("footer.cta.headline.highlight")}</span
+                >{t("footer.cta.headline.post")}
             </h2>
             <p
                 class="text-[var(--color-text-muted)] text-lg mb-10 max-w-2xl mx-auto relative z-10"
             >
-                Join 500+ businesses using Rasedi to process payments, automate
-                payouts, and scale faster.
+                {t("footer.cta.description")}
             </p>
 
             <div
                 class="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10"
             >
                 <a
-                    href="/contact"
+                    href={localizePath("/contact")}
                     class="px-8 py-4 bg-primary text-black font-bold rounded-full hover:shadow-[0_0_40px_rgba(0,220,130,0.3)] transition-all transform hover:scale-105 active:scale-95"
                 >
-                    Start Integration Now
+                    {t("footer.cta.start")}
                 </a>
                 <a
-                    href="/developers"
+                    href={localizePath("/developers")}
                     class="px-8 py-4 bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-main)] font-bold rounded-full hover:bg-[var(--color-surface-hover)] transition-all"
                 >
-                    Read Documentation
+                    {t("footer.cta.docs")}
                 </a>
             </div>
         </div>
@@ -58,7 +70,7 @@ const currentYear = new Date().getFullYear();
             <!-- Brand Column (Left) -->
             <div class="flex flex-col gap-6 max-w-sm">
                 <a
-                    href="/"
+                    href={localizePath("/")}
                     class="text-2xl font-bold tracking-tight flex items-center gap-2 group w-fit"
                 >
                     <span
@@ -69,8 +81,7 @@ const currentYear = new Date().getFullYear();
                 <p
                     class="text-[var(--color-text-muted)] text-sm leading-relaxed max-w-xs"
                 >
-                    The financial operating system for modern Iraqi commerce.
-                    Unified payments, simplified.
+                    {t("footer.brand.description")}
                 </p>
             </div>
 
@@ -81,81 +92,81 @@ const currentYear = new Date().getFullYear();
                 <!-- Column 1: Product -->
                 <div class="flex flex-col gap-4">
                     <h4 class="font-bold text-[var(--color-text-main)]">
-                        Product
+                        {t("footer.col.product")}
                     </h4>
                     <a
-                        href="/features"
+                        href={localizePath("/features")}
                         class="text-[var(--color-text-muted)] hover:text-primary transition-all duration-300 hover:translate-x-1 text-sm"
-                        >Features</a
+                        >{t("footer.link.features")}</a
                     >
                     <a
-                        href="/features"
+                        href={localizePath("/features")}
                         class="text-[var(--color-text-muted)] hover:text-primary transition-all duration-300 hover:translate-x-1 text-sm"
-                        >Payment Gateway</a
+                        >{t("footer.link.gateway")}</a
                     >
                     <a
-                        href="/features"
+                        href={localizePath("/features")}
                         class="text-[var(--color-text-muted)] hover:text-primary transition-all duration-300 hover:translate-x-1 text-sm"
-                        >Payouts</a
+                        >{t("footer.link.payouts")}</a
                     >
                     <a
-                        href="/features"
+                        href={localizePath("/features")}
                         class="text-[var(--color-text-muted)] hover:text-primary transition-all duration-300 hover:translate-x-1 text-sm"
-                        >Invoicing</a
+                        >{t("footer.link.invoicing")}</a
                     >
                 </div>
 
                 <!-- Column 2: Resources -->
                 <div class="flex flex-col gap-4">
                     <h4 class="font-bold text-[var(--color-text-main)]">
-                        Resources
+                        {t("footer.col.resources")}
                     </h4>
                     <a
-                        href="/developers"
+                        href={localizePath("/developers")}
                         class="text-[var(--color-text-muted)] hover:text-primary transition-all duration-300 hover:translate-x-1 text-sm"
-                        >Documentation</a
+                        >{t("footer.link.docs")}</a
                     >
                     <a
-                        href="/developers"
+                        href={localizePath("/developers")}
                         class="text-[var(--color-text-muted)] hover:text-primary transition-all duration-300 hover:translate-x-1 text-sm"
-                        >API Reference</a
-                    >
-                    <a
-                        href="#"
-                        class="text-[var(--color-text-muted)] hover:text-primary transition-all duration-300 hover:translate-x-1 text-sm"
-                        >Status Page</a
+                        >{t("footer.link.api")}</a
                     >
                     <a
                         href="#"
                         class="text-[var(--color-text-muted)] hover:text-primary transition-all duration-300 hover:translate-x-1 text-sm"
-                        >Support</a
+                        >{t("footer.link.status")}</a
+                    >
+                    <a
+                        href="#"
+                        class="text-[var(--color-text-muted)] hover:text-primary transition-all duration-300 hover:translate-x-1 text-sm"
+                        >{t("footer.link.support")}</a
                     >
                 </div>
 
                 <!-- Column 3: Company -->
                 <div class="flex flex-col gap-4">
                     <h4 class="font-bold text-[var(--color-text-main)]">
-                        Company
+                        {t("footer.col.company")}
                     </h4>
                     <a
-                        href="/company"
+                        href={localizePath("/company")}
                         class="text-[var(--color-text-muted)] hover:text-primary transition-all duration-300 hover:translate-x-1 text-sm"
-                        >About</a
+                        >{t("footer.link.about")}</a
                     >
                     <a
-                        href="/contact"
+                        href={localizePath("/contact")}
                         class="text-[var(--color-text-muted)] hover:text-primary transition-all duration-300 hover:translate-x-1 text-sm"
-                        >Contact</a
-                    >
-                    <a
-                        href="#"
-                        class="text-[var(--color-text-muted)] hover:text-primary transition-all duration-300 hover:translate-x-1 text-sm"
-                        >Twitter / X</a
+                        >{t("footer.link.contact")}</a
                     >
                     <a
                         href="#"
                         class="text-[var(--color-text-muted)] hover:text-primary transition-all duration-300 hover:translate-x-1 text-sm"
-                        >LinkedIn</a
+                        >{t("footer.link.twitter")}</a
+                    >
+                    <a
+                        href="#"
+                        class="text-[var(--color-text-muted)] hover:text-primary transition-all duration-300 hover:translate-x-1 text-sm"
+                        >{t("footer.link.linkedin")}</a
                     >
                 </div>
             </div>
@@ -180,7 +191,7 @@ const currentYear = new Date().getFullYear();
                 </span>
                 <span
                     class="text-xs font-mono text-[var(--color-text-main)] font-medium"
-                    >All systems operational</span
+                    >{t("footer.status")}</span
                 >
             </div>
 
@@ -189,13 +200,14 @@ const currentYear = new Date().getFullYear();
                 class="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-[var(--color-text-muted)] text-xs"
             >
                 <p>
-                    &copy; {currentYear} Rasedi Technologies Ltd.
+                    &copy; {currentYear}
+                    {t("footer.legal.copyright")}
                 </p>
                 <a href="#" class="hover:text-primary transition-colors"
-                    >Privacy Policy</a
+                    >{t("footer.legal.privacy")}</a
                 >
                 <a href="#" class="hover:text-primary transition-colors"
-                    >Terms of Service</a
+                    >{t("footer.legal.terms")}</a
                 >
             </div>
         </div>

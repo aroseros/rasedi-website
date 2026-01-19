@@ -5,6 +5,10 @@ import cardIcon from "../assets/hero/card.png";
 import qiIcon from "../assets/hero/qi.png";
 import superQiIcon from "../assets/hero/superqi.png";
 import nassWalletIcon from "../assets/hero/nasswallet.png";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const nodes = [
   { img: walletIcon, alt: "ZainCash", delay: "0s", orbit: "orbit-1", scale: 1 },
@@ -19,10 +23,10 @@ const nodes = [
   <!-- Headline -->
   <h1 class="absolute top-4 md:top-8 z-30 text-center px-4 w-full">
     <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400 font-bold text-3xl md:text-6xl tracking-tight mb-2 md:mb-4 drop-shadow-sm">
-      The Central Nervous System
+      {t("network.title.pre")}
     </span>
     <span class="block text-primary/90 font-mono text-xs md:text-xl tracking-[0.2em] md:tracking-[0.4em] uppercase animate-pulse shadow-primary/20 drop-shadow-sm">
-      of Iraqi Payments
+      {t("network.title.post")}
     </span>
   </h1>
 

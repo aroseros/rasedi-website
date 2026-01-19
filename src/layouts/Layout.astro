@@ -3,16 +3,19 @@ import "../styles/global.css";
 import ScrollAnimations from "../components/ScrollAnimations.astro";
 import Footer from "../components/Footer.astro";
 import SEO from "../components/SEO.astro";
+import { getLangFromUrl } from "../i18n/utils";
 
 interface Props {
 	title: string;
 }
 
 const { title } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const dir = lang === "ar" || lang === "ku" ? "rtl" : "ltr";
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang={lang} dir={dir} class="scroll-smooth">
 	<head>
 		<SEO title={title} />
 		<script is:inline>

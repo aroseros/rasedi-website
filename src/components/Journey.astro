@@ -4,23 +4,28 @@ import step1 from "../assets/journey/step1.png";
 import step2 from "../assets/journey/step2.png";
 import step3 from "../assets/journey/step3.png";
 import step4 from "../assets/journey/step4.png";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="py-32 relative">
     <div class="max-w-6xl mx-auto px-4">
         <div class="text-center mb-24">
             <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                How It <span class="text-primary">Works</span>
+                {t("journey.title.pre")}
+                <span class="text-primary">{t("journey.title.highlight")}</span>
             </h2>
             <p class="text-[var(--color-text-muted)] text-xl max-w-2xl mx-auto">
-                From zero to revenue in four simple steps.
+                {t("journey.description")}
             </p>
         </div>
 
         <div class="relative">
             <!-- Vertical Line -->
             <div
-                class="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-primary/30 to-transparent hidden md:block overflow-hidden"
+                class="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-primary/30 to-transparent hidden md:block overflow-hidden transform -translate-x-1/2"
             >
                 <div
                     class="absolute inset-0 w-full h-1/2 bg-gradient-to-b from-transparent via-primary to-transparent animate-data-flow"
@@ -35,23 +40,22 @@ import step4 from "../assets/journey/step4.png";
                     class="journey-step relative grid md:grid-cols-2 gap-12 items-center"
                 >
                     <div
-                        class="glass-card p-8 md:text-right reveal-left order-2 md:order-1 transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(0,220,130,0.1)] group"
+                        class="glass-card p-8 md:text-end reveal-left order-2 md:order-1 transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(0,220,130,0.1)] group"
                     >
                         <h3
                             class="text-2xl font-bold mb-4 text-[var(--color-text-main)] group-hover:text-primary transition-colors"
                         >
-                            1. Create Merchant Account
+                            {t("journey.step.1.title")}
                         </h3>
                         <p class="text-[var(--color-text-muted)]">
-                            Sign up in seconds. No paperwork required for
-                            initial access. Just your email and phone number.
+                            {t("journey.step.1.desc")}
                         </p>
                     </div>
                     <div
                         class="relative flex justify-center md:justify-start reveal-right order-1 md:order-2"
                     >
                         <div
-                            class="journey-number w-12 h-12 bg-[var(--color-surface)] border-2 border-primary/50 rounded-full absolute -left-[26px] top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center font-bold text-primary shadow-[0_0_15px_rgba(0,220,130,0.3)]"
+                            class="journey-number w-12 h-12 bg-[var(--color-surface)] border-2 border-primary/50 rounded-full absolute -left-[26px] rtl:-right-[26px] rtl:left-auto top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center font-bold text-primary shadow-[0_0_15px_rgba(0,220,130,0.3)]"
                         >
                             1
                         </div>
@@ -69,9 +73,9 @@ import step4 from "../assets/journey/step4.png";
                             >
                             </div>
                             <div
-                                class="absolute bottom-4 right-4 px-4 py-1 bg-primary text-black text-xs font-bold rounded-full"
+                                class="absolute bottom-4 right-4 rtl:right-auto rtl:left-4 px-4 py-1 bg-primary text-black text-xs font-bold rounded-full"
                             >
-                                Register
+                                {t("journey.step.1.badge")}
                             </div>
                         </div>
                     </div>
@@ -85,7 +89,7 @@ import step4 from "../assets/journey/step4.png";
                         class="order-1 md:order-1 relative flex justify-center md:justify-end reveal-left"
                     >
                         <div
-                            class="journey-number w-12 h-12 bg-[var(--color-surface)] border-2 border-primary/50 rounded-full absolute -right-[26px] top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center font-bold text-primary shadow-[0_0_15px_rgba(0,220,130,0.3)]"
+                            class="journey-number w-12 h-12 bg-[var(--color-surface)] border-2 border-primary/50 rounded-full absolute -right-[26px] rtl:-left-[26px] rtl:right-auto top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center font-bold text-primary shadow-[0_0_15px_rgba(0,220,130,0.3)]"
                         >
                             2
                         </div>
@@ -115,11 +119,10 @@ import step4 from "../assets/journey/step4.png";
                         <h3
                             class="text-2xl font-bold mb-4 text-[var(--color-text-main)] group-hover:text-primary transition-colors"
                         >
-                            2. Get KYC Verified
+                            {t("journey.step.2.title")}
                         </h3>
                         <p class="text-[var(--color-text-muted)]">
-                            Automated identity verification. Upload your ID and
-                            business registration. Approved in under 24 hours.
+                            {t("journey.step.2.desc")}
                         </p>
                     </div>
                 </div>
@@ -129,23 +132,22 @@ import step4 from "../assets/journey/step4.png";
                     class="journey-step relative grid md:grid-cols-2 gap-12 items-center"
                 >
                     <div
-                        class="glass-card p-8 md:text-right reveal-left order-2 md:order-1 transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(0,220,130,0.1)] group"
+                        class="glass-card p-8 md:text-end reveal-left order-2 md:order-1 transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_30px_rgba(0,220,130,0.1)] group"
                     >
                         <h3
                             class="text-2xl font-bold mb-4 text-[var(--color-text-main)] group-hover:text-primary transition-colors"
                         >
-                            3. Create Payment Link
+                            {t("journey.step.3.title")}
                         </h3>
                         <p class="text-[var(--color-text-muted)]">
-                            Generate a secure link from your dashboard. Set
-                            amount, currency, and description. No coding needed.
+                            {t("journey.step.3.desc")}
                         </p>
                     </div>
                     <div
                         class="relative flex justify-center md:justify-start reveal-right order-1 md:order-2"
                     >
                         <div
-                            class="journey-number w-12 h-12 bg-[var(--color-surface)] border-2 border-primary/50 rounded-full absolute -left-[26px] top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center font-bold text-primary shadow-[0_0_15px_rgba(0,220,130,0.3)]"
+                            class="journey-number w-12 h-12 bg-[var(--color-surface)] border-2 border-primary/50 rounded-full absolute -left-[26px] rtl:-right-[26px] rtl:left-auto top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center font-bold text-primary shadow-[0_0_15px_rgba(0,220,130,0.3)]"
                         >
                             3
                         </div>
@@ -170,7 +172,7 @@ import step4 from "../assets/journey/step4.png";
                         class="order-1 md:order-1 relative flex justify-center md:justify-end reveal-left"
                     >
                         <div
-                            class="journey-number w-12 h-12 bg-[var(--color-surface)] border-2 border-primary/50 rounded-full absolute -right-[26px] top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center font-bold text-primary shadow-[0_0_15px_rgba(0,220,130,0.3)]"
+                            class="journey-number w-12 h-12 bg-[var(--color-surface)] border-2 border-primary/50 rounded-full absolute -right-[26px] rtl:-left-[26px] rtl:right-auto top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center font-bold text-primary shadow-[0_0_15px_rgba(0,220,130,0.3)]"
                         >
                             4
                         </div>
@@ -199,11 +201,10 @@ import step4 from "../assets/journey/step4.png";
                         <h3
                             class="text-2xl font-bold mb-4 text-[var(--color-text-main)] group-hover:text-primary transition-colors"
                         >
-                            4. Get Paid
+                            {t("journey.step.4.title")}
                         </h3>
                         <p class="text-[var(--color-text-muted)]">
-                            Funds settle instantly to your Rasedi wallet.
-                            Withdraw to your bank or ZainCash anytime.
+                            {t("journey.step.4.desc")}
                         </p>
                     </div>
                 </div>
@@ -218,11 +219,13 @@ import step4 from "../assets/journey/step4.png";
 
     gsap.registerPlugin(ScrollTrigger);
 
-    // Animate Left Items
+    const isRTL = document.documentElement.dir === "rtl";
+
+    // Animate Left Items (In LTR: From Left -50. In RTL: From Right 50)
     gsap.utils.toArray(".reveal-left").forEach((el: any) => {
         gsap.fromTo(
             el,
-            { x: -50, opacity: 0 },
+            { x: isRTL ? 50 : -50, opacity: 0 },
             {
                 x: 0,
                 opacity: 1,
@@ -236,11 +239,11 @@ import step4 from "../assets/journey/step4.png";
         );
     });
 
-    // Animate Right Items
+    // Animate Right Items (In LTR: From Right 50. In RTL: From Left -50)
     gsap.utils.toArray(".reveal-right").forEach((el: any) => {
         gsap.fromTo(
             el,
-            { x: 50, opacity: 0 },
+            { x: isRTL ? -50 : 50, opacity: 0 },
             {
                 x: 0,
                 opacity: 1,

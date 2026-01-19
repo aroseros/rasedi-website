@@ -1,8 +1,12 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Navbar from "../components/Navbar.astro";
-import CodeTabs from "../components/CodeTabs.astro";
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import CodeTabs from "../../components/CodeTabs.astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+export function getStaticPaths() {
+    return [{ params: { lang: "ar" } }, { params: { lang: "ku" } }];
+}
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);

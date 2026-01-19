@@ -2,6 +2,16 @@
 import { Image } from "astro:assets";
 import NetworkAnimation from "./NetworkAnimation.astro";
 import BackgroundGlow from "./BackgroundGlow.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const localizePath = (path: string) => {
+  if (path.startsWith("http")) return path;
+  if (lang === "en") return path;
+  return `/${lang}${path}`;
+};
 ---
 
 <section class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
@@ -14,7 +24,7 @@ import BackgroundGlow from "./BackgroundGlow.astro";
   >
     <!-- Left Column: Content (Text First on Mobile) -->
     <div
-      class="flex flex-col items-center lg:items-start text-center lg:text-left order-1 lg:order-1 pt-12 lg:pt-0"
+      class="flex flex-col items-center lg:items-start text-center lg:text-start order-1 lg:order-1 pt-12 lg:pt-0"
     >
       <!-- Badge -->
       <div
@@ -27,29 +37,27 @@ import BackgroundGlow from "./BackgroundGlow.astro";
           <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"
           ></span>
         </span>
-        Accept Payments in Iraq
+        {t("hero.badge")}
       </div>
 
       <!-- Headline -->
       <h2
         class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.1]"
       >
-        The <span
+        {t("hero.title.1")}
+        <span
           class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-emerald-600"
-          >Financial OS</span
+          >{t("hero.title.highlight")}</span
         >
         <br />
-        for Modern Business
+        {t("hero.title.2")}
       </h2>
 
       <!-- Description -->
       <p
         class="text-lg md:text-xl text-[var(--color-text-muted)] leading-relaxed mb-10 max-w-xl"
       >
-        Accept ZainCash, AsiaHawala, and Cards with a single API. <br
-          class="hidden md:block"
-        />
-        Built for developers, trusted by banks.
+        <span set:html={t("hero.description")} />
       </p>
 
       <!-- CTA Buttons -->
@@ -57,10 +65,10 @@ import BackgroundGlow from "./BackgroundGlow.astro";
         class="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto"
       >
         <a
-          href="/contact"
+          href={localizePath("/contact")}
           class="px-8 py-4 rounded-full bg-primary text-black font-bold text-lg shadow-[0_0_20px_rgba(0,220,130,0.4)] hover:shadow-[0_0_30px_rgba(0,220,130,0.6)] hover:scale-105 transition-all duration-300 w-full sm:w-auto relative overflow-hidden group text-center"
         >
-          <span class="relative z-10">Create Account</span>
+          <span class="relative z-10">{t("hero.cta.account")}</span>
           <div
             class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
           >
@@ -71,7 +79,7 @@ import BackgroundGlow from "./BackgroundGlow.astro";
           target="_blank"
           class="px-8 py-4 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text-main)] font-medium text-lg hover:bg-[var(--color-surface-hover)] hover:border-primary/30 transition-all w-full sm:w-auto text-center"
         >
-          Read Documentation
+          {t("hero.cta.docs")}
         </a>
       </div>
     </div>
